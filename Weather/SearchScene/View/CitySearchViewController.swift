@@ -38,13 +38,13 @@ extension CitySearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let count = (try? viewModel.filterdCities..count) ?? 0
+        let count = (try? viewModel.filterdCities.value().count) ?? 0
         return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:  WeatherCell.name, for: indexPath)as! WeatherCell
-        if let item = try? viewModel.keyword.value()?[indexPath.row] {
+        if let item = try? viewModel.filterdCities.value()[indexPath.row] {
             //cell.configure(type: )
         }
         return cell
